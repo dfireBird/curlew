@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { createConnection } from "typeorm";
 import express, { Request, Response } from "express";
 import cors from "cors";
-import { Routes } from "./routes";
+import { AuthRoutes } from "./routes";
 
 createConnection().then(async connection => {
 
@@ -10,7 +10,7 @@ createConnection().then(async connection => {
     app.use(express.json());
     app.use(cors());
 
-    Routes.forEach(route => {
+    AuthRoutes.forEach(route => {
         (app as any)[route.method](route.route, (req: Request, res: Response, next: Function) => {
             const result = (new (route.controller as any))[route.action](req, res, next);
             if (result instanceof Promise) {
