@@ -2,6 +2,7 @@ import "reflect-metadata";
 import { createConnection } from "typeorm";
 import express, { Request, Response } from "express";
 import cors from "cors";
+import morgan from "morgan";
 import { AuthRoutes, IRoute } from "./routes";
 
 createConnection().then(async connection => {
@@ -9,6 +10,7 @@ createConnection().then(async connection => {
     const app = express();
     app.use(express.json());
     app.use(cors());
+    app.use(morgan('dev'));
 
     const registerRoute = (route: IRoute) => {
         (app as any)[route.method](route.route, (req: Request, res: Response, next: Function) => {
