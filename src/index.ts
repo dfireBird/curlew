@@ -1,12 +1,14 @@
 import "reflect-metadata";
 import { createConnection } from "typeorm";
 import express, { Request, Response } from "express";
+import cors from "cors";
 import { Routes } from "./routes";
 
 createConnection().then(async connection => {
 
     const app = express();
     app.use(express.json());
+    app.use(cors());
 
     Routes.forEach(route => {
         (app as any)[route.method](route.route, (req: Request, res: Response, next: Function) => {
