@@ -3,8 +3,9 @@ import { createConnection } from "typeorm";
 import express, { Request, Response } from "express";
 import cors from "cors";
 import morgan from "morgan";
-import { AuthRoutes, IRoute } from "./routes";
+import { AuthRoutes, AvailabilityRoutes, IRoute } from "./routes";
 
+// prettier-ignore
 createConnection().then(async connection => {
 
     const app = express();
@@ -12,6 +13,7 @@ createConnection().then(async connection => {
     app.use(cors());
     app.use(morgan('dev'));
 
+    // prettier-ignore
     const registerRoute = (route: IRoute) => {
         (app as any)[route.method](route.route, (req: Request, res: Response, next: Function) => {
             const result = (new (route.controller as any))[route.action](req, res, next);
@@ -25,6 +27,7 @@ createConnection().then(async connection => {
     }
 
     AuthRoutes.forEach(registerRoute);
+    AvailabilityRoutes.forEach(registerRoute);
 
     app.listen(3000);
 

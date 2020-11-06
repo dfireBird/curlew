@@ -1,4 +1,5 @@
 import { AuthRoutes } from "./AuthRoutes";
+import { AvailabilityRoutes } from "./AvailabilityRoutes";
 
 export interface IRoute {
     method: string;
@@ -9,4 +10,4 @@ export interface IRoute {
 
 export const Routes = [];
 
-export { AuthRoutes };
+export { AuthRoutes, AvailabilityRoutes };
