@@ -12,4 +12,7 @@ export class Team {
 
     @Column("text")
     avail_description: string;
+
+    @Column({ default: false })
+    cluster_head: boolean;
 }
