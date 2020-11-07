@@ -10,6 +10,9 @@ export interface IRoute {
     action: string;
 }
 
-export const Routes = [];
-
-export { AuthRoutes, AvailabilityRoutes, ReportRoutes, SocialRoutes };
+export const Routes = [
+    ...AuthRoutes,
+    ...AvailabilityRoutes,
+    ...ReportRoutes,
+    ...SocialRoutes,
+];

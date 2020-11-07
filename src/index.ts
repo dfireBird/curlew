@@ -3,13 +3,7 @@ import { createConnection } from "typeorm";
 import express, { Request, Response } from "express";
 import cors from "cors";
 import morgan from "morgan";
-import {
-    AuthRoutes,
-    AvailabilityRoutes,
-    ReportRoutes,
-    IRoute,
-    SocialRoutes,
-} from "./routes";
+import { IRoute, Routes } from "./routes";
 
 // prettier-ignore
 createConnection().then(async connection => {
@@ -32,11 +26,7 @@ createConnection().then(async connection => {
         });
     }
 
-    AuthRoutes.forEach(registerRoute);
-    AvailabilityRoutes.forEach(registerRoute);
-    ReportRoutes.forEach(registerRoute);
-    SocialRoutes.forEach(registerRoute);
-
+    Routes.forEach(registerRoute)
     app.listen(3000);
 
     console.log("Express server has started on port 3000. Open http://localhost:3000/users to see results");
