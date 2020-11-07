@@ -3,7 +3,13 @@ import { createConnection } from "typeorm";
 import express, { Request, Response } from "express";
 import cors from "cors";
 import morgan from "morgan";
-import { AuthRoutes, AvailabilityRoutes, ReportRoutes, IRoute } from "./routes";
+import {
+    AuthRoutes,
+    AvailabilityRoutes,
+    ReportRoutes,
+    IRoute,
+    SocialRoutes,
+} from "./routes";
 
 // prettier-ignore
 createConnection().then(async connection => {
@@ -29,6 +35,7 @@ createConnection().then(async connection => {
     AuthRoutes.forEach(registerRoute);
     AvailabilityRoutes.forEach(registerRoute);
     ReportRoutes.forEach(registerRoute);
+    SocialRoutes.forEach(registerRoute);
 
     app.listen(3000);
 
