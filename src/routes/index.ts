@@ -3,6 +3,7 @@ import { AvailabilityRoutes } from "./AvailabilityRoutes";
 import { ReportRoutes } from "./ReportRoutes";
 import { SocialRoutes } from "./SocialRoutes";
 import { EventRoutes } from "./EventRoutes";
+import { ImageRoutes } from "./ImageRoutes";
 
 export interface IRoute {
     method: string;
@@ -17,4 +18,5 @@ export const Routes = [
     ...ReportRoutes,
     ...SocialRoutes,
     ...EventRoutes,
+    ...ImageRoutes,
 ];
