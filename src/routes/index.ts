@@ -1,5 +1,6 @@
 import { AuthRoutes } from "./AuthRoutes";
 import { AvailabilityRoutes } from "./AvailabilityRoutes";
+import { ReportRoutes } from "./ReportRoutes";
 
 export interface IRoute {
     method: string;
@@ -10,4 +11,4 @@ export interface IRoute {
 
 export const Routes = [];
 
-export { AuthRoutes, AvailabilityRoutes };
+export { AuthRoutes, AvailabilityRoutes, ReportRoutes };
