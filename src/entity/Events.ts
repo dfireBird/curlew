@@ -19,7 +19,7 @@ export class Events {
     @Column()
     venue: string;
 
-    @Column("varchar", { length: 255, array: true })
+    @Column("simple-array")
     speakers: string[];
 
     @Column("varchar", { length: 1023 })
