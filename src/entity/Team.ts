@@ -15,4 +15,25 @@ export class Team {
 
     @Column({ default: false })
     cluster_head: boolean;
+
+    @Column({ nullable: true })
+    instagram: string;
+
+    @Column({ nullable: true })
+    twitter: string;
+
+    @Column({ nullable: true })
+    facebook: string;
+
+    @Column({ nullable: true })
+    github: string;
+
+    @Column({ nullable: true })
+    medium: string;
+
+    @Column({ nullable: true })
+    slack: string;
+
+    @Column({ nullable: true })
+    discord: string;
 }
