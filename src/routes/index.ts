@@ -4,6 +4,7 @@ import { ReportRoutes } from "./ReportRoutes";
 import { SocialRoutes } from "./SocialRoutes";
 import { EventRoutes } from "./EventRoutes";
 import { ImageRoutes } from "./ImageRoutes";
+import { ResourcesRoutes } from "./ResourcesRoutes";
 
 export interface IRoute {
     method: string;
@@ -19,4 +20,5 @@ export const Routes = [
     ...SocialRoutes,
     ...EventRoutes,
     ...ImageRoutes,
+    ...ResourcesRoutes,
 ];
