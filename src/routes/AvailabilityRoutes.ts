@@ -24,4 +24,10 @@ export const AvailabilityRoutes = [
         controller: AvailabilityController,
         action: "postAvailDesc",
     },
+    {
+        method: "get",
+        route: "/availabilities",
+        controller: AvailabilityController,
+        action: "getAllAvailability",
+    },
 ];

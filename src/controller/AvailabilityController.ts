@@ -48,6 +48,24 @@ export class AvailabilityController {
         return await this.teamRepository.save(user);
     }
 
+    async getAllAvailability(req: Request, resp: Response) {
+        const user = await this.getUser(req, resp);
+        if (user === undefined) return;
+
+        if (!user.lead) {
+            resp.status(403).send("Not a lead");
+            return;
+        }
+
+        return this.teamRepository
+            .createQueryBuilder("team")
+            .leftJoin("team.user", "user")
+            .select("team.avail_description")
+            .addSelect("team.avail_status")
+            .addSelect("user.name")
+            .getMany();
+    }
+
     private async getUser(req: Request, resp: Response) {
         const userId = await getUserId(req, resp);
         if (userId === undefined) return;
