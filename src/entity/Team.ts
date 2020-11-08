@@ -8,10 +8,19 @@ export class Team {
     user: User;
 
     @Column()
+    cluster: string;
+
+    @Column()
+    year: number;
+
+    @Column()
     avail_status: boolean;
 
     @Column("text")
     avail_description: string;
+
+    @Column({ default: false })
+    lead: boolean;
 
     @Column({ default: false })
     cluster_head: boolean;
