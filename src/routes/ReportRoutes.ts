@@ -7,4 +7,10 @@ export const ReportRoutes = [
         controller: ReportController,
         action: "submitReport",
     },
+    {
+        method: "get",
+        route: "/reports",
+        controller: ReportController,
+        action: "getAllReports",
+    },
 ];

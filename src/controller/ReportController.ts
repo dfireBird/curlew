@@ -1,7 +1,7 @@
 import { getRepository } from "typeorm";
 import { Request, Response } from "express";
 import { Report } from "../entity/Report";
-import { getUserId } from "../utils/auth";
+import { getUserId, isLead } from "../utils/auth";
 import { Team } from "../entity/Team";
 
 export class ReportController {
@@ -52,5 +52,15 @@ export class ReportController {
         report.submittedBy = user;
 
         return this.reportRepository.save(report);
+    }
+
+    async getAllReports(req: Request, resp: Response) {
+        const lead = isLead(req, resp);
+        if (!lead) {
+            resp.status(403).send("Not a lead");
+            return;
+        }
+
+        return this.reportRepository.find();
     }
 }
