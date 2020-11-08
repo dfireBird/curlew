@@ -1,5 +1,7 @@
 import { OAuth2Client } from "google-auth-library";
 import { Request, Response } from "express";
+import { getRepository } from "typeorm";
+import { Team } from "../entity/Team";
 
 export async function getUserId(req: Request, resp: Response) {
     const auth_header = req.headers.authorization;
@@ -26,4 +28,20 @@ export async function getUserId(req: Request, resp: Response) {
     }
 
     return payload.sub;
+}
+export async function isLead(req: Request, resp: Response) {
+    const userId = await getUserId(req, resp);
+    if (typeof userId === "undefined") return;
+    const user = await getRepository(Team).findOne({
+        where: {
+            user: userId,
+        },
+    });
+
+    if (typeof user === "undefined") {
+        resp.status(403).send("Not a team member");
+        return;
+    }
+
+    return user.lead;
 }

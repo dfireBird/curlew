@@ -1,14 +1,13 @@
 import { getRepository } from "typeorm";
 import { Request, Response } from "express";
 import { Remark } from "../entity/Remark";
-import { getUserId } from "../utils/auth";
-import { Team } from "../entity/Team";
+import { getUserId, isLead } from "../utils/auth";
 
 export class RemarkController {
     private remarkRepository = getRepository(Remark);
 
     async getRemarks(req: Request, resp: Response) {
-        const lead = await this.isLead(req, resp);
+        const lead = await isLead(req, resp);
         if (typeof lead === "undefined") return;
 
         if (!lead) {
@@ -20,7 +19,7 @@ export class RemarkController {
     }
 
     async addRemark(req: Request, resp: Response) {
-        const lead = await this.isLead(req, resp);
+        const lead = await isLead(req, resp);
         if (typeof lead === "undefined") return;
 
         if (!lead) {
@@ -47,22 +46,5 @@ export class RemarkController {
         remark.remarks = req.body.remarks;
 
         return this.remarkRepository.save(remark);
-    }
-
-    private async isLead(req: Request, resp: Response) {
-        const userId = await getUserId(req, resp);
-        if (typeof userId === "undefined") return;
-        const user = await getRepository(Team).findOne({
-            where: {
-                user: userId,
-            },
-        });
-
-        if (typeof user === "undefined") {
-            resp.status(403).send("Not a team member");
-            return;
-        }
-
-        return user.lead;
     }
 }
