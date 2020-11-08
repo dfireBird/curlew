@@ -6,6 +6,7 @@ import { EventRoutes } from "./EventRoutes";
 import { ImageRoutes } from "./ImageRoutes";
 import { ResourcesRoutes } from "./ResourcesRoutes";
 import { TeamRoutes } from "./TeamRoutes";
+import { RemarkRoutes } from "./RemarkRoutes";
 
 export interface IRoute {
     method: string;
@@ -23,4 +24,5 @@ export const Routes = [
     ...ImageRoutes,
     ...ResourcesRoutes,
     ...TeamRoutes,
+    ...RemarkRoutes,
 ];
