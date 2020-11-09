@@ -1,5 +1,5 @@
 import { getRepository } from "typeorm";
-import { Request, Response, NextFunction } from "express";
+import { Request, Response } from "express";
 import { Team } from "../entity/Team";
 import { getUserId } from "../utils/auth";
 

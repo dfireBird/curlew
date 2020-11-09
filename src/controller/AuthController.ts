@@ -1,5 +1,5 @@
 import { getRepository } from "typeorm";
-import { Request, Response, NextFunction } from "express";
+import { Request, Response } from "express";
 import { OAuth2Client } from "google-auth-library";
 import { User } from "../entity/User";
 
@@ -7,7 +7,7 @@ export class AuthController {
     private client = new OAuth2Client(process.env.CLIENT_ID);
     private userRepository = getRepository(User);
 
-    async auth(req: Request, resp: Response, _next: NextFunction) {
+    async auth(req: Request, resp: Response) {
         if (req.body.id_token === undefined) {
             resp.status(400).send("No id_token key present");
             return;

@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { createConnection } from "typeorm";
-import express, { Request, Response } from "express";
+import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import morgan from "morgan";
 import { IRoute, Routes } from "./routes";
@@ -15,7 +15,7 @@ createConnection().then(async connection => {
 
     // prettier-ignore
     const registerRoute = (route: IRoute) => {
-        (app as any)[route.method](route.route, (req: Request, res: Response, next: Function) => {
+        (app as any)[route.method](route.route, (req: Request, res: Response, next: NextFunction) => {
             const result = (new (route.controller as any))[route.action](req, res, next);
             if (result instanceof Promise) {
                 result.then(result => result !== null && result !== undefined ? res.send(result) : undefined);
@@ -27,8 +27,8 @@ createConnection().then(async connection => {
     }
 
     Routes.forEach(registerRoute)
-    app.listen(3000);
+    app.listen(8000);
 
-    console.log("Express server has started on port 3000. Open http://localhost:3000/users to see results");
+    console.log("The server has started on the port 8000.");
 
 }).catch(error => console.log(error));
