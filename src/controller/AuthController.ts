@@ -37,8 +37,15 @@ export class AuthController {
                 id: payload.sub,
             });
 
-            return this.userRepository.save(user);
+            const created_user = await this.userRepository.save(user);
+            return {
+                ...created_user,
+                id_token: req.body.id_token,
+            };
         }
-        return user;
+        return {
+            ...user,
+            id_token: req.body.id_token,
+        };
     }
 }
