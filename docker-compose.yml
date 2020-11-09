@@ -1,0 +1,24 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    container_name: "curlew_db"
+    env_file: .env
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+
+  api:
+    build: .
+    env_file: .env
+    container_name: "curlew_api"
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+
+volumes:
+  db-data:
