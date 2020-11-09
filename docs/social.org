@@ -1,0 +1,46 @@
+#+TITLE: Social Media Docs
+
+* Prerequisite
+The client should authenticated sucessfuly before accessing the endpoints below.
+
+* =GET /social=
+Return the social media accounts of the current signed-in user,
+if the user is part of team.
+** Request Headers
+=Authorization: "Bearer <id_token>"=
+** Response format
+#+BEGIN_SRC json
+{
+  "google_account": "",
+  "instagram": "",
+  "facebook": "",
+  "twitter": "",
+  "github": "",
+  "medium": "",
+  "slack": "",
+  "discord": "",
+}
+#+END_SRC
+
+* =POST /social=
+Adds the social media accounts for the current signed-in user,
+if the user is part of team.
+** Request Headers
+=Authorization: "Bearer <id_token>"=
+** Request Body
+All of the below values are optional, any values can be avoided.
+*NOTE*: If a social media account is sent through request and also in database,
+it would be overwritten with the one in request.
+#+BEGIN_SRC json
+{
+  "instagram": "",
+  "facebook": "",
+  "twitter": "",
+  "github": "",
+  "medium": "",
+  "slack": "",
+  "discord": "",
+}
+#+END_SRC
+** Response Format
+Return the details of team member whose social media account is changed

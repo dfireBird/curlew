@@ -24,12 +24,15 @@ More details [[file:docs/report.org][here]].
 + =GET /reports=
 + =POST /report=
 ** Social Media
+More details [[file:docs/social.org][here]].
 + =GET /social=
 + =POST /social=
 ** Events
+More details [[file:docs/events.org][here]].
 + =GET /events=
 + =POST /event=
 ** Images
+More details [[file:docs/images.org][here]].
 + =GET /images=
 + =POST /image=
 ** Resource

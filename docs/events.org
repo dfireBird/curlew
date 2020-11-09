@@ -1,0 +1,60 @@
+#+TITLE: Event docs
+
+Endpoints that adds and gets events.
+
+* =GET /events=
+Gets all upcoming event from the database
+** Response Format
+Returns array of all upcoming events with following schema for each array 
+elements.
+The id is of type integer
+#+BEGIN_SRC json
+{
+  "id": 1,
+  "title": "<title_of_event>",
+  "date": "<date_of_event_in_yyyy-mm-dd_format>",
+  "venue": "<self_explanatory>",
+  "speakers": [
+    "speaker1", "speaker2"
+  ],
+  "link": "<self_explanatory>",
+  "tag": "<self_explanatory>",
+  "description": "<self_explanatory>",
+  "timestamp": "<timestamp_when_event_is_created>"
+}
+#+END_SRC
+
+* =POST /event=
+Adds a new event to database, can only done by a member of team
+** Request Headers
+=Authorization: "Bearer <id_token>"=
+** Request Body
+#+BEGIN_SRC json
+{
+  "title": "<title_of_event>",
+  "date": "<date_of_event_in_yyyy-mm-dd_format>",
+  "venue": "<self_explanatory>",
+  "speakers": [
+    "speaker1", "speaker2"
+  ],
+  "link": "<self_explanatory>",
+  "tag": "<self_explanatory>",
+  "description": "<self_explanatory>",
+}
+#+END_SRC
+** Response Format
+#+BEGIN_SRC json
+{
+  "id": 1,
+  "title": "<title_of_event>",
+  "date": "<date_of_event_in_yyyy-mm-dd_format>",
+  "venue": "<self_explanatory>",
+  "speakers": [
+    "speaker1", "speaker2"
+  ],
+  "link": "<self_explanatory>",
+  "tag": "<self_explanatory>",
+  "description": "<self_explanatory>",
+  "timestamp": "<timestamp_when_event_is_created>"
+}
+#+END_SRC

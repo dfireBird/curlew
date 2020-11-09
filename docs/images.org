@@ -1,0 +1,35 @@
+#+TITLE: Images Docs
+Endpoints that add images related to events or workshops
+
+* =GET /images=
+Gets all images from the database
+** Response format
+Returns array of all images with following schema for each array
+elements.
+The id is of type integer
+#+BEGIN_SRC json
+{
+  "id": 1,
+  "link": "<link_of_the_image>",
+}
+#+END_SRC
+
+* =POST /image=
+Add new image to database, can only done by member of team.
+** Request Headers
+=Authorization: "Bearer <id_token>"=
+** Request Body
+#+BEGIN_SRC json
+{
+  "url": "<url_of_image>"
+}
+#+END_SRC
+** Response format
+Return newly added image
+The id is of type integer
+#+BEGIN_SRC json
+{
+  "id": 1,
+  "link": "<link_of_the_image>",
+}
+#+END_SRC
