@@ -1,0 +1,76 @@
+#+TITLE: Availability Docs
+
+* Prerequisite
+The client should authenticated sucessfuly before accessing the endpoints below.
+
+* =GET /availability=
+Returns the availability status of the current signed-in user, 
+if the user is a part of the team.
+** Request Headers
+=Authorization: "Bearer <id_token>"=
+** Response Fomat
+Boolean value of availability
+#+BEGIN_SRC json
+{
+  "availability": true
+}
+#+END_SRC
+
+* =POST /availability=
+Set the availability status of the current signed-in user,
+if the user is a part of the team.
+** Request Headers
+=Authorization: "Bearer <id_token>"=
+** Request Body
+#+BEGIN_SRC json
+{
+  "availability": false
+}
+#+END_SRC
+Here availability is boolean value
+** Response Format
+Response has entire details about the team member.
+
+* =GET /availability/desc=
+Returns the availability description of the current signed-in user,
+if the user is a part of the team.
+** Request Headers
+=Authorization: "Bearer <id_token>"=
+** Response format
+#+BEGIN_SRC json
+{
+ "availability_description": "<description>"
+}
+#+END_SRC
+
+* =POST /availability/desc=
+Set the availability description of the current signed-in user,
+if the user is a part of the team.
+** Request Headers
+=Authorization: "Bearer <id_token>"=
+
+** Request format
+#+BEGIN_SRC json
+{
+  "availability_description": "<description>"
+}
+#+END_SRC
+** Response Format
+Response has entire details about the team member.
+
+* =GET /availabilities=
+Returns availability status and description of all team member,
+only accessed by the lead of the team.
+** Request Headers
+=Authorization: "Bearer <id_token>"=
+** Response Format
+Response is an array with each element has the following format of json
+#+BEGIN_SRC json
+{
+  "availability": false,
+  "availability_description": "<description>"
+  "user": {
+    "name": "<name of the user>"
+  }
+}
+#+END_SRC

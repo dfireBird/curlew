@@ -1,0 +1,52 @@
+#+TITLE: Report Docs
+
+* Prerequisite
+The client should authenticated sucessfuly before accessing the endpoints below.
+
+* =POST /report=
+Adds a new report, can only be requested by a cluster head.
+** Request Headers
+=Authorization: "Bearer <id_token>"=
+** Request Body
+#+BEGIN_SRC json
+{
+  "title": "<self_explanatory>",
+  "date": "<date_in_yyyy-mm-dd_format>",
+  "venue": "<self_explanatory>",
+  "report": "<report_text>",
+}
+#+END_SRC
+** Response Format
+Returns the newly created response, id is an integer.
+#+BEGIN_SRC json
+{
+  "id": 1,
+  "title": "<self_explanatory>",
+  "date": "<date_in_yyyy-mm-dd_format>",
+  "venue": "<self_explanatory>",
+  "report": "<report_text>",
+  "report_date": "<date_report_was_added_in_yyyy-mm-dd_format>",
+  "submitted_by": "<user_details>",
+}
+
+#+END_SRC
+
+* GET =/reports=
+Returns all reports, only available of the team lead.
+** Request Headers
+=Authorization: "Bearer <id_token>"=
+** Repsonse Format
+Returns an array of report with each elemnts has following schema:
+#+BEGIN_SRC json
+{
+  "id": 1,
+  "title": "<self_explanatory>",
+  "date": "<date_in_yyyy-mm-dd_format>",
+  "venue": "<self_explanatory>",
+  "report": "<report_text>",
+  "report_date": "<date_report_was_added_in_yyyy-mm-dd_format>",
+  "submitted_by": "<user_details>",
+}
+
+#+END_SRC
+

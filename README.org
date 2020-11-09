@@ -9,24 +9,36 @@ and remarks.
 * Endpoints
 Documentation on what an endpoint does is detailed on the docs folder
 The list of endpoints:
-+ =POST /auth= 
+** Authentication
+More details [[file:docs/auth.org][here]].
++ =POST /auth=
+** Availability
+More details [[file:docs/availability.org][here]].
 + =GET /availability=
 + =POST /availability=
 + =GET /availability/desc=
 + =POST /availability/desc=
 + =GET /availabilities=
+** Report
+More details [[file:docs/report.org][here]].
 + =GET /reports=
 + =POST /report=
+** Social Media
 + =GET /social=
 + =POST /social=
+** Events
 + =GET /events=
 + =POST /event=
+** Images
 + =GET /images=
 + =POST /image=
+** Resource
 + =GET /resources=
 + =POST /resource=
+** Team Members
 + =GET /team=
 + =POST /team=
+** Remarks
 + =GET /remarks=
 + =POST /remark=
 * Deployment

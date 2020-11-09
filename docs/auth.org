@@ -1,0 +1,34 @@
+#+TITLE: Authentication Docs
+
+Authentication is done using Google accounts or google workspace accounts
+* Prerequisite
+The client or frontend should've have a Google sign-in intergration.
+** Resource:
++ Web: [[https://developers.google.com/identity/sign-in/web/sign-in][Integrating Google Sign-In into your web app]]
++ Android: [[https://developers.google.com/identity/sign-in/android/start-integrating][Start Integrating Google Sign-In into Your Android App]]
++ iOS: [[https://developers.google.com/identity/sign-in/ios][Google Sign-In for iOS | Google Developers]]
+
+* =POST /auth=
+The id token can be retrieved after successful google account sign-in and
+sent to API through a POST request on =/auth= endpoint.
+After successful POST request, the API creates a user account if user is not
+available and signs-in and return user details.
+
+*Note*:
+This should be the first request made to the API, the ID token will be used in
+Authorization headers for most of requests later, so it should be stored.
+** Request body
+#+BEGIN_SRC json
+{
+  "id_token": "<id_token>"
+}
+#+END_SRC
+** Response format
+#+BEGIN_SRC json
+{
+  "id": "<id_of_the_user>",
+  "name": "<name_retrieved_from_google>",
+  "email": "<google_email_from_which_user_signed-in>",
+  "id_token": "<same_as_the_one_in_request>"
+}
+#+END_SRC
