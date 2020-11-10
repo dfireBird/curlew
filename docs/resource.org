@@ -1,0 +1,47 @@
+#+TITLE: Resource Docs
+Enpoints to add or get resources
+
+* =GET /resource=
+Get all resources from the database
+** Response Format
+Returns array of all resources with following schema for each array
+elements.
+The id is of type integer
+#+BEGIN_SRC json
+{
+  "id": 1,
+  "title": "<title_of_resource>",
+  "url": "<url_of_resource>",
+  "category": "<self_explanatory>",
+  "description": "<description_related_to_resource>",
+  "submittedBy": "<details_of_user_submitted>"
+}
+#+END_SRC
+
+* =POST /image=
+Adds a new resource to database, can only done by a member of team.
+** Request Headers
+=Authorization: "Bearer <id_token>"=
+** Request Body
+#+BEGIN_SRC json
+{
+  "title": "<title_of_resource>",
+  "url": "<url_of_resource>",
+  "category": "<self_explanatory>",
+  "description": "<description_related_to_resource>",
+}
+#+END_SRC
+** Response Format
+Returns newly added resource.
+The id is of type integer
+#+BEGIN_SRC json
+{
+  "id": 1,
+  "title": "<title_of_resource>",
+  "url": "<url_of_resource>",
+  "category": "<self_explanatory>",
+  "description": "<description_related_to_resource>",
+  "submittedBy": "<details_of_user_submitted>"
+}
+#+END_SRC
+

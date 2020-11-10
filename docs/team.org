@@ -1,0 +1,30 @@
+#+TITLE: Team Member Docs
+
+* =GET /team=
+Get details about all team members
+** Response Format
+Returns array of all team members with following schema for each array
+elements.
+#+BEGIN_SRC json
+{
+  "cluster": "<cluster_team_member_belong>"
+  "year": "<year_he_joined>",
+  "user": { "name": "<name_of_member>" }
+}
+#+END_SRC
+
+* =POST /team=
+Add a new member to the team, can only done by lead of the team.
+** Request Headers
+=Authorization: "Bearer <id_token>"=
+** Request Body
+*Note*: The team member must signed-up before adding to the team.
+#+BEGIN_SRC json
+{
+  "name": "<name_of_member>",
+  "cluster": "<cluster_member_belongs_to>",
+  "year": "<optional_argument_will_added_automatically_if_not_present>"
+}
+#+END_SRC
+** Response Format
+Returns the details of team member back.

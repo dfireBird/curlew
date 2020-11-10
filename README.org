@@ -36,12 +36,15 @@ More details [[file:docs/images.org][here]].
 + =GET /images=
 + =POST /image=
 ** Resource
+More details [[file:docs/resource.org][here]].
 + =GET /resources=
 + =POST /resource=
 ** Team Members
+More details [[file:docs/team.org][here]].
 + =GET /team=
 + =POST /team=
 ** Remarks
+More details [[file:docs/remark.org][here]].
 + =GET /remarks=
 + =POST /remark=
 * Deployment

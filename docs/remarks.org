@@ -1,0 +1,45 @@
+#+TITLE: Remark Docs
+
+* =GET /remarks=
+Gets all remarks about team members, can only accessible by lead of team.
+** Request Headers
+=Authorization: "Bearer <id_token>"=
+** Response Format
+Return array of all remarks with following schema for each array
+elements.
+The id is of type integer
+#+BEGIN_SRC json
+{
+  "id": 1,
+  "cluster": "<cluster_member_belongs>",
+  "name": "<name_of_member>",
+  "year": "<year_member_joined>",
+  "remarks": "<remark_about_user>"
+}
+#+END_SRC
+
+* =POST /remark=
+Add a remark about a team member, also accessible only to lead.
+** Request Headers
+=Authorization: "Bearer <id_token>"=
+** Request Body
+#+BEGIN_SRC json
+{
+  "name": "<name_of_member>",
+  "cluster": "<cluster_member_belongs>",
+  "year": "<year_member_joined>",
+  "remarks": "<remarks_about_user>",
+}
+#+END_SRC
+** Response Format
+Returns the newly added remark
+The id is of type integer
+#+BEGIN_SRC json
+{
+  "id": 1,
+  "cluster": "<cluster_member_belongs>",
+  "name": "<name_of_member>",
+  "year": "<year_member_joined>",
+  "remarks": "<remark_about_user>"
+}
+#+END_SRC
