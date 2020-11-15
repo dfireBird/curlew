@@ -25,24 +25,27 @@ export class Team {
     @Column({ default: false })
     cluster_head: boolean;
 
-    @Column({ nullable: true })
-    instagram: string;
+    @Column({ default: false })
+    google_account: false;
 
-    @Column({ nullable: true })
-    twitter: string;
+    @Column({ default: false })
+    instagram: boolean;
 
-    @Column({ nullable: true })
-    facebook: string;
+    @Column({ default: false })
+    twitter: boolean;
 
-    @Column({ nullable: true })
-    github: string;
+    @Column({ default: false })
+    facebook: boolean;
 
-    @Column({ nullable: true })
-    medium: string;
+    @Column({ default: false })
+    github: boolean;
 
-    @Column({ nullable: true })
-    slack: string;
+    @Column({ default: false })
+    medium: boolean;
 
-    @Column({ nullable: true })
-    discord: string;
+    @Column({ default: false })
+    slack: boolean;
+
+    @Column({ default: false })
+    discord: boolean;
 }
