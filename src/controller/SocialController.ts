@@ -2,6 +2,7 @@ import { getRepository } from "typeorm";
 import { Request, Response } from "express";
 import { getUserId } from "../utils/auth";
 import { Team } from "../entity/Team";
+import { User } from "../entity/User";
 
 export class SocialController {
     private teamRepository = getRepository(Team);
@@ -21,8 +22,39 @@ export class SocialController {
             return;
         }
 
+        if (req.query.name) {
+            if (!user.lead) {
+                resp.status(403).send("Not a lead");
+                return;
+            }
+            const userRepo = getRepository(User);
+            const searchedUser = await userRepo.findOne({
+                where: { name: req.query.name },
+            });
+            if (typeof searchedUser === "undefined") {
+                resp.status(404).send("User not found!");
+                return;
+            }
+            const searchedTeamMem = await this.teamRepository.findOne(
+                searchedUser.id
+            );
+            if (typeof searchedTeamMem === "undefined") {
+                resp.status(404).send("Requested user is not a team member");
+                return;
+            }
+            return {
+                google_account: searchedTeamMem.google_account,
+                instagram: searchedTeamMem.instagram,
+                twitter: searchedTeamMem.twitter,
+                facebook: searchedTeamMem.facebook,
+                github: searchedTeamMem.github,
+                medium: searchedTeamMem.slack,
+                discord: searchedTeamMem.discord,
+            };
+        }
+
         return {
-            google_account: user.user.email,
+            google_account: user.google_account,
             instagram: user.instagram,
             twitter: user.twitter,
             facebook: user.facebook,
