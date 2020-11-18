@@ -68,14 +68,41 @@ export class SocialController {
         const userId = await getUserId(req, resp);
         if (typeof userId === "undefined") return;
 
-        const user = await this.teamRepository.findOne({
+        const currentUser = await this.teamRepository.findOne({
             where: {
                 user: userId,
             },
             relations: ["user"],
         });
-        if (typeof user === "undefined") {
+        if (typeof currentUser === "undefined") {
             resp.status(403).send("Not a team member");
+            return;
+        }
+
+        if (!currentUser.lead) {
+            resp.status(403).send("Not a lead");
+            return;
+        }
+
+        if (typeof req.body.name === "undefined") {
+            resp.status(400).send(
+                "No field named 'name' in body. 'Name' field is required"
+            );
+            return;
+        }
+
+        const user = await this.teamRepository.findOne({
+            where: {
+                user: {
+                    name: req.body.name,
+                },
+            },
+        });
+
+        if (typeof user === "undefined") {
+            resp.status(404).send(
+                "The user searched for is not registered or not a team member."
+            );
             return;
         }
 
