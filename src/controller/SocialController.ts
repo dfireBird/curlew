@@ -27,19 +27,17 @@ export class SocialController {
                 resp.status(403).send("Not a lead");
                 return;
             }
-            const userRepo = getRepository(User);
-            const searchedUser = await userRepo.findOne({
-                where: { name: req.query.name },
+            const searchedTeamMem = await this.teamRepository.findOne({
+                where: {
+                    user: {
+                        name: req.query.name,
+                    },
+                },
             });
-            if (typeof searchedUser === "undefined") {
-                resp.status(404).send("User not found!");
-                return;
-            }
-            const searchedTeamMem = await this.teamRepository.findOne(
-                searchedUser.id
-            );
             if (typeof searchedTeamMem === "undefined") {
-                resp.status(404).send("Requested user is not a team member");
+                resp.status(404).send(
+                    "The user searched for is not registered or not a team member."
+                );
                 return;
             }
             return {
