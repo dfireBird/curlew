@@ -7,7 +7,7 @@ The client should authenticated sucessfuly before accessing the endpoints below.
 Return the social media accounts of the current signed-in user,
 if the user is part of team.
 ** Request Headers
-=Authorization: "Bearer <id_token>"=
+=Authorization: "Bearer <id_token>"⠀=
 ** Response format
 #+BEGIN_SRC json
 {
@@ -26,7 +26,7 @@ if the user is part of team.
 Adds the social media accounts for the current signed-in user,
 if the user is part of team.
 ** Request Headers
-=Authorization: "Bearer <id_token>"=
+=Authorization: "Bearer <id_token>"⠀=
 ** Request Body
 All of the below values are optional, any values can be avoided.
 *NOTE*: If a social media account is sent through request and also in database,

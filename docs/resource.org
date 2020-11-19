@@ -21,7 +21,7 @@ The id is of type integer
 * =POST /image=
 Adds a new resource to database, can only done by a member of team.
 ** Request Headers
-=Authorization: "Bearer <id_token>"=
+=Authorization: "Bearer <id_token>"⠀=
 ** Request Body
 #+BEGIN_SRC json
 {

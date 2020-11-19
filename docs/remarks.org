@@ -3,7 +3,7 @@
 * =GET /remarks=
 Gets all remarks about team members, can only accessible by lead of team.
 ** Request Headers
-=Authorization: "Bearer <id_token>"=
+=Authorization: "Bearer <id_token>"⠀=
 ** Response Format
 Return array of all remarks with following schema for each array
 elements.
@@ -21,7 +21,7 @@ The id is of type integer
 * =POST /remark=
 Add a remark about a team member, also accessible only to lead.
 ** Request Headers
-=Authorization: "Bearer <id_token>"=
+=Authorization: "Bearer <id_token>"⠀=
 ** Request Body
 #+BEGIN_SRC json
 {

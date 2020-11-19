@@ -44,7 +44,7 @@ More details [[file:docs/team.org][here]].
 + =GET /team=
 + =POST /team=
 ** Remarks
-More details [[file:docs/remark.org][here]].
+More details [[file:docs/remarks.org][here]].
 + =GET /remarks=
 + =POST /remark=
 * Deployment

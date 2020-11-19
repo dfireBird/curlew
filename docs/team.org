@@ -16,7 +16,7 @@ elements.
 * =POST /team=
 Add a new member to the team, can only done by lead of the team.
 ** Request Headers
-=Authorization: "Bearer <id_token>"=
+=Authorization: "Bearer <id_token>"⠀=
 ** Request Body
 *Note*: The team member must signed-up before adding to the team.
 #+BEGIN_SRC json

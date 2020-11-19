@@ -6,7 +6,7 @@ The client should authenticated sucessfuly before accessing the endpoints below.
 * =POST /report=
 Adds a new report, can only be requested by a cluster head.
 ** Request Headers
-=Authorization: "Bearer <id_token>"=
+=Authorization: "Bearer <id_token>"⠀=
 ** Request Body
 #+BEGIN_SRC json
 {
@@ -31,10 +31,10 @@ Returns the newly created response, id is an integer.
 
 #+END_SRC
 
-* GET =/reports=
+* =GET /reports=
 Returns all reports, only available of the team lead.
 ** Request Headers
-=Authorization: "Bearer <id_token>"=
+=Authorization: "Bearer <id_token>"⠀=
 ** Repsonse Format
 Returns an array of report with each elemnts has following schema:
 #+BEGIN_SRC json
