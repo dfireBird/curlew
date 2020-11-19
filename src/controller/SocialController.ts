@@ -2,7 +2,6 @@ import { getRepository } from "typeorm";
 import { Request, Response } from "express";
 import { getUserId } from "../utils/auth";
 import { Team } from "../entity/Team";
-import { User } from "../entity/User";
 
 export class SocialController {
     private teamRepository = getRepository(Team);
@@ -41,6 +40,7 @@ export class SocialController {
                 return;
             }
             return {
+                name: searchedTeamMem.user.name,
                 google_account: searchedTeamMem.google_account,
                 instagram: searchedTeamMem.instagram,
                 twitter: searchedTeamMem.twitter,
