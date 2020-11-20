@@ -4,35 +4,46 @@
 The client should authenticated sucessfuly before accessing the endpoints below.
 
 * =GET /social=
-Return the social media accounts of the current signed-in user,
-if the user is part of team.
+Return the social media booleans of the current signed-in user,
+if the user is part of team or optionally search an team member by name but
+can only be done by lead of team.
 ** Request Headers
 =Authorization: "Bearer <id_token>"⠀=
+** Query Parameters
+An optional =name= query can be specificed and can only be done by lead of team.
+| Query  | Type   | Optional |
+|--------+--------+----------|
+| name   | string | true     |
 ** Response format
+All values below are booleans
+**Note:** =name= field will only be available if =name= query paramter is 
+specified
 #+BEGIN_SRC json
 {
-  "google_account": "",
-  "instagram": "",
-  "facebook": "",
-  "twitter": "",
-  "github": "",
-  "medium": "",
-  "slack": "",
-  "discord": "",
+  "name": "<name_of_searched_user_(optional)>",
+  "google_account": true,
+  "instagram": false,
+  "facebook": true,
+  "twitter": true,
+  "github": false,
+  "medium": true,
+  "slack": false,
+  "discord": true,
 }
 #+END_SRC
 
 * =POST /social=
-Adds the social media accounts for the current signed-in user,
-if the user is part of team.
+Changes or adds the social meadia boolean of the user specified
+(name specified in body), can only be done by lead of team.
 ** Request Headers
 =Authorization: "Bearer <id_token>"⠀=
 ** Request Body
-All of the below values are optional, any values can be avoided.
-*NOTE*: If a social media account is sent through request and also in database,
+All of the below values are optional except =name= any values can be avoided.
+*NOTE*: If a social media boolean is sent through request and also in database,
 it would be overwritten with the one in request.
 #+BEGIN_SRC json
 {
+  "name": "<name_of_required_user>",
   "instagram": "",
   "facebook": "",
   "twitter": "",
